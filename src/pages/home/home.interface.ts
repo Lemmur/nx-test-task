@@ -9,6 +9,7 @@ export interface HomeStateInterface {
 
 export interface HomeComponentProps {
     users?: UserDataInterface[];
+    usersLoading?: boolean;
 
     getUsers?(): Action;
 }
