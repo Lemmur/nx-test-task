@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .user {
+            display: block;
+            border: 1px solid grey;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 20px auto;
+            width: 400px;
+        }
+
+        .name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="users"></div>
+    <script>
+        const usersElement = document.getElementById('users');
+
+        function renderUser(user) {
+            const userBlock = document.createElement("div");
+            const name = document.createElement("div");
+            const email = document.createElement("div");
+            const phone = document.createElement("div");
+
+            userBlock.classList.add("user");
+            name.classList.add("name");
+            name.textContent = user.name;
+            email.textContent = user.email;
+            phone.textContent = user.phone;
+
+            userBlock.appendChild(name);
+            userBlock.appendChild(email);
+            userBlock.appendChild(phone);
+            usersElement.appendChild(userBlock);
+        }
+
+        function onUsersLoadHandler(event) {
+            this.response.map(renderUser);
+        }
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+        xhr.responseType = 'json';
+        xhr.addEventListener('load', onUsersLoadHandler);
+        xhr.send();
+    </script>
+</body>
+</html>
+
