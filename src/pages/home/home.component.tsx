@@ -4,11 +4,9 @@ import {getUsers} from "./home.actions";
 import {AppStateInterface} from "../../app.reducer";
 import {HomeComponentProps} from "./home.interface";
 import UserComponent from "components/user/user.component";
-
 import "./home.less";
 
 class HomeComponent extends React.Component<HomeComponentProps, {}> {
-
     componentDidMount() {
         this.props.getUsers();
     }

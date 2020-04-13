@@ -1,13 +1,8 @@
 import {combineReducers, Action} from 'redux';
-import {HomeStateInterface} from "./home.interface";
 import {UserFetchActions} from "./home.const";
 import {GetUsersErrorAction, GetUsersSuccessAction} from "./home.actions";
-
-export interface UserDataInterface {
-    name?: string;
-    phone?: string;
-    email?: string;
-}
+import {UserDataInterface} from "../../modules/users/users.interface";
+import {HomeStateInterface} from "../../app.reducer";
 
 export function usersReducer(state: UserDataInterface[] = [], action: GetUsersSuccessAction) {
     switch (action.type) {

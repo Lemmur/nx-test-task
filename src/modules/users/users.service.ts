@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export function getUsersList() {
+export const getUsersList = () => {
     return axios.get('https://jsonplaceholder.typicode.com/users');
 }
